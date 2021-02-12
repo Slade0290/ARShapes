@@ -96,6 +96,36 @@ var ARSphere = createReactClass({
             arShadowReceiver={true} />
 
         </ViroARImageMarker>
+
+        <ViroARImageMarker target={"pyramide"} onAnchorFound={this._onAnchorFound} pauseUpdates={this.state.pauseUpdates}>
+          
+          <Viro3DObject
+            scale={[-10, -10, -10]}
+            source={require('./res/shapes/object_pyramide.obj')}
+            type="OBJ"
+            materials={this.state.texture}
+            onClick={this._toggleButtons}
+            animation={{name:"scaleCar", run:this.state.animateCar,}} />
+
+          <ViroSpotLight
+            innerAngle={5}
+            outerAngle={25}
+            direction={[0,-1,0]}
+            position={[0, 5, 1]}
+            color="#ffffff"
+            castsShadow={true}
+            shadowMapSize={2048}
+            shadowNearZ={2}
+            shadowFarZ={7}
+            shadowOpacity={.7} />
+
+          <ViroQuad
+            rotation={[-90, 0, 0]}
+            position={[0, -0.001, 0]}
+            width={2.5} height={2.5}
+            arShadowReceiver={true} />
+
+        </ViroARImageMarker>
        
       </ViroARScene>
     );
@@ -142,6 +172,11 @@ ViroARTrackingTargets.createTargets({
   },
   cube : {
     source : require('./res/cube.png'),
+    orientation : "Up",
+    physicalWidth : 0.165 // real world width in meters
+  },
+  pyramide : {
+    source : require('./res/pyramide.png'),
     orientation : "Up",
     physicalWidth : 0.165 // real world width in meters
   }
