@@ -27,13 +27,27 @@ var ARSphere = createReactClass({
 	getInitialState() {
 		return {
 			texture: "white",
+			textureC: "white",
+			textureT: "white",
 			playAnim: false,
+			playAnimTriangle: false,
+			playAnimCube: false,
 			animateCar: false,
-			tapWhite: false,
-          tapBlue: false,
-          tapGrey: false,
-          tapRed: false,
-          tapYellow: false,
+			squareTapWhite: false,
+          squareTapBlue: false,
+          squareTapGrey: false,
+          squareTapRed: false,
+          squareTapYellow: false,
+			sphereTapWhite: false,
+          sphereTapBlue: false,
+          sphereTapGrey: false,
+          sphereTapRed: false,
+          sphereTapYellow: false,
+			trangleTapWhite: false,
+          trangleTapBlue: false,
+          trangleTapGrey: false,
+          trangleTapRed: false,
+          trangleTapYellow: false,
 		}
 	},
 	
@@ -50,108 +64,41 @@ var ARSphere = createReactClass({
                                 heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                                 position={[-.2, .25, 0]}
                                 onClick={this._selectWhite}
-                                animation={{name:"tapAnimation", run:this.state.tapWhite, onFinish:this._animateFinished}}
+                                animation={{name:"tapAnimation", run:this.state.sphereTapWhite, onFinish:this._animateFinished}}
                                 shadowCastingBitMask={0} />
                     
                     <ViroSphere materials={["blue_sphere"]}
                                 heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                                 position={[-.1, .25, 0]}
                                 onClick={this._selectBlue}
-                                animation={{name:"tapAnimation", run:this.state.tapBlue, onFinish:this._animateFinished}}
+                                animation={{name:"tapAnimation", run:this.state.sphereTapBlue, onFinish:this._animateFinished}}
                                 shadowCastingBitMask={0} />
                     
                     <ViroSphere materials={["grey_sphere"]}
                                 heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                                 position={[0, .25, 0]}
                                 onClick={this._selectGrey}
-                                animation={{name:"tapAnimation", run:this.state.tapGrey, onFinish:this._animateFinished}}
+                                animation={{name:"tapAnimation", run:this.state.sphereTapGrey, onFinish:this._animateFinished}}
                                 shadowCastingBitMask={0} />
                     
                     <ViroSphere materials={["red_sphere"]}
                                 heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                                 position={[.1, .25, 0]}
                                 onClick={this._selectRed}
-                                animation={{name:"tapAnimation", run:this.state.tapRed, onFinish:this._animateFinished}}
+                                animation={{name:"tapAnimation", run:this.state.sphereTapRed, onFinish:this._animateFinished}}
                                 shadowCastingBitMask={0} />
                     
                     <ViroSphere materials={["yellow_sphere"]}
                                 heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                                 position={[.2, .25, 0]}
                                 onClick={this._selectYellow}
-                                animation={{name:"tapAnimation", run:this.state.tapYellow, onFinish:this._animateFinished}}
+                                animation={{name:"tapAnimation", run:this.state.sphereTapYellow, onFinish:this._animateFinished}}
                                 shadowCastingBitMask={0}/>
                   </ViroNode>
                   
                   <Viro3DObject
 						scale={[-10, -10, -10]}
 						source={require('./res/shapes/object_sphere.obj')}
-						type="OBJ"
-						materials={this.state.texture}
-						onClick={this._toggleButtons}
-						animation={{name: "scaleCar", run: this.state.animateCar,}}/>
-					
-					<ViroSpotLight
-						innerAngle={5}
-						outerAngle={25}
-						direction={[0, -1, 0]}
-						position={[0, 5, 1]}
-						color="#ffffff"
-						castsShadow={true}sssss
-						shadowMapSize={2048}
-						shadowNearZ={2}
-						shadowFarZ={7}
-						shadowOpacity={.7}/>
-					
-					<ViroQuad
-						rotation={[-90, 0, 0]}
-						position={[0, -0.001, 0]}
-						width={2.5} height={2.5}
-						arShadowReceiver={true}/>
-				
-				</ViroARImageMarker>
-				
-				<ViroARImageMarker target={"cube"}
-				                   pauseUpdates={this.state.pauseUpdates}>
-                  <ViroNode scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animName, run:this.state.playAnim,}}>
-                    <ViroSphere materials={["white_sphere"]}
-                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
-                                position={[-.2, .25, 0]}
-                                onClick={this._selectWhite}
-                                animation={{name:"tapAnimation", run:this.state.tapWhite, onFinish:this._animateFinished}}
-                                shadowCastingBitMask={0} />
-                    
-                    <ViroSphere materials={["blue_sphere"]}
-                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
-                                position={[-.1, .25, 0]}
-                                onClick={this._selectBlue}
-                                animation={{name:"tapAnimation", run:this.state.tapBlue, onFinish:this._animateFinished}}
-                                shadowCastingBitMask={0} />
-                    
-                    <ViroSphere materials={["grey_sphere"]}
-                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
-                                position={[0, .25, 0]}
-                                onClick={this._selectGrey}
-                                animation={{name:"tapAnimation", run:this.state.tapGrey, onFinish:this._animateFinished}}
-                                shadowCastingBitMask={0} />
-                    
-                    <ViroSphere materials={["red_sphere"]}
-                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
-                                position={[.1, .25, 0]}
-                                onClick={this._selectRed}
-                                animation={{name:"tapAnimation", run:this.state.tapRed, onFinish:this._animateFinished}}
-                                shadowCastingBitMask={0} />
-                    
-                    <ViroSphere materials={["yellow_sphere"]}
-                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
-                                position={[.2, .25, 0]}
-                                onClick={this._selectYellow}
-                                animation={{name:"tapAnimation", run:this.state.tapYellow, onFinish:this._animateFinished}}
-                                shadowCastingBitMask={0}/>
-                  </ViroNode>
-                  
-                  <Viro3DObject
-						scale={[-10, -10, -10]}
-						source={require('./res/shapes/object_cube.obj')}
 						type="OBJ"
 						materials={this.state.texture}
 						onClick={this._toggleButtons}
@@ -176,42 +123,109 @@ var ARSphere = createReactClass({
 						arShadowReceiver={true}/>
 				
 				</ViroARImageMarker>
+				
+				<ViroARImageMarker target={"cube"}
+				                   pauseUpdates={this.state.pauseUpdates}>
+                  <ViroNode scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animNameC, run:this.state.playAnimCube,}}>
+                    <ViroSphere materials={["white_sphere"]}
+                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
+                                position={[-.2, .25, 0]}
+                                onClick={this._selectWhiteC}
+                                animation={{name:"tapAnimation", run:this.state.squareTapWhite, onFinish:this._animateFinished}}
+                                shadowCastingBitMask={0} />
+                    
+                    <ViroSphere materials={["blue_sphere"]}
+                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
+                                position={[-.1, .25, 0]}
+                                onClick={this._selectBlueC}
+                                animation={{name:"tapAnimation", run:this.state.squareTapBlue, onFinish:this._animateFinished}}
+                                shadowCastingBitMask={0} />
+                    
+                    <ViroSphere materials={["grey_sphere"]}
+                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
+                                position={[0, .25, 0]}
+                                onClick={this._selectGreyC}
+                                animation={{name:"tapAnimation", run:this.state.squareTapGrey, onFinish:this._animateFinished}}
+                                shadowCastingBitMask={0} />
+                    
+                    <ViroSphere materials={["red_sphere"]}
+                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
+                                position={[.1, .25, 0]}
+                                onClick={this._selectRedC}
+                                animation={{name:"tapAnimation", run:this.state.squareTapRed, onFinish:this._animateFinished}}
+                                shadowCastingBitMask={0} />
+                    
+                    <ViroSphere materials={["yellow_sphere"]}
+                                heightSegmentCount={20} widthSegmentCount={20} radius={.03}
+                                position={[.2, .25, 0]}
+                                onClick={this._selectYellowC}
+                                animation={{name:"tapAnimation", run:this.state.squareTapYellow, onFinish:this._animateFinished}}
+                                shadowCastingBitMask={0}/>
+                  </ViroNode>
+                  
+                  <Viro3DObject
+						scale={[-10, -10, -10]}
+						source={require('./res/shapes/object_cube.obj')}
+						type="OBJ"
+						materials={this.state.textureC}
+						onClick={this._toggleButtonsCube}
+						animation={{name: "scaleCar", run: this.state.animateCar,}}/>
+					
+					<ViroSpotLight
+						innerAngle={5}
+						outerAngle={25}
+						direction={[0, -1, 0]}
+						position={[0, 5, 1]}
+						color="#ffffff"
+						castsShadow={true}
+						shadowMapSize={2048}
+						shadowNearZ={2}
+						shadowFarZ={7}
+						shadowOpacity={.7}/>
+					
+					<ViroQuad
+						rotation={[-90, 0, 0]}
+						position={[0, -0.001, 0]}
+						width={2.5} height={2.5}
+						arShadowReceiver={true}/>
+				
+				</ViroARImageMarker>
               
               <ViroARImageMarker target={"pyramide"}  pauseUpdates={this.state.pauseUpdates}>
-                <ViroNode scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animName, run:this.state.playAnim,}}>
+                <ViroNode scale={[0, 0, 0]} transformBehaviors={["billboardY"]} animation={{name:this.state.animNameT, run:this.state.playAnimTriangle,}}>
                   <ViroSphere materials={["white_sphere"]}
                               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                               position={[-.2, .25, 0]}
-                              onClick={this._selectWhite}
-                              animation={{name:"tapAnimation", run:this.state.tapWhite, onFinish:this._animateFinished}}
+                              onClick={this._selectWhiteT}
+                              animation={{name:"tapAnimation", run:this.state.trangleTapWhite, onFinish:this._animateFinished}}
                               shadowCastingBitMask={0} />
     
                   <ViroSphere materials={["blue_sphere"]}
                               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                               position={[-.1, .25, 0]}
-                              onClick={this._selectBlue}
-                              animation={{name:"tapAnimation", run:this.state.tapBlue, onFinish:this._animateFinished}}
+                              onClick={this._selectBlueT}
+                              animation={{name:"tapAnimation", run:this.state.trangleTapBlue, onFinish:this._animateFinished}}
                               shadowCastingBitMask={0} />
     
                   <ViroSphere materials={["grey_sphere"]}
                               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                               position={[0, .25, 0]}
-                              onClick={this._selectGrey}
-                              animation={{name:"tapAnimation", run:this.state.tapGrey, onFinish:this._animateFinished}}
+                              onClick={this._selectGreyT}
+                              animation={{name:"tapAnimation", run:this.state.trangleTapGrey, onFinish:this._animateFinished}}
                               shadowCastingBitMask={0} />
     
                   <ViroSphere materials={["red_sphere"]}
                               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                               position={[.1, .25, 0]}
-                              onClick={this._selectRed}
-                              animation={{name:"tapAnimation", run:this.state.tapRed, onFinish:this._animateFinished}}
+                              onClick={this._selectRedT}
+                              animation={{name:"tapAnimation", run:this.state.trangleTapRed, onFinish:this._animateFinished}}
                               shadowCastingBitMask={0} />
     
                   <ViroSphere materials={["yellow_sphere"]}
                               heightSegmentCount={20} widthSegmentCount={20} radius={.03}
                               position={[.2, .25, 0]}
-                              onClick={this._selectYellow}
-                              animation={{name:"tapAnimation", run:this.state.tapYellow, onFinish:this._animateFinished}}
+                              onClick={this._selectYellowT}
+                              animation={{name:"tapAnimation", run:this.state.trangleTapYellow, onFinish:this._animateFinished}}
                               shadowCastingBitMask={0}/>
                 </ViroNode>
   
@@ -219,8 +233,8 @@ var ARSphere = createReactClass({
                       scale={[-10, -10, -10]}
                       source={require('./res/shapes/object_pyramide.obj')}
                       type="OBJ"
-                      materials={this.state.texture}
-                      onClick={this._toggleButtons}
+                      materials={this.state.textureT}
+                      onClick={this._toggleButtonsTriangle}
                       animation={{name: "scaleCar", run: this.state.animateCar,}}/>
                   <ViroSpotLight
                       innerAngle={5}
@@ -262,39 +276,109 @@ var ARSphere = createReactClass({
 			playAnim: true
 		})
 	},
+	_toggleButtonsTriangle() {
+		this.setState({
+			animNameT: (this.state.animNameT == "scaleUp" ? "scaleDown" : "scaleUp"),
+			playAnimTriangle: true
+		})
+	},
+	_toggleButtonsCube() {
+		this.setState({
+			animNameC: (this.state.animNameC == "scaleUp" ? "scaleDown" : "scaleUp"),
+			playAnimCube: true
+		})
+	},
 	_selectWhite() {
 		this.setState({
 			texture: "white",
-			tapWhite: true
+			sphereTapWhite: true,
+			
+		})
+	},
+	_selectWhiteT() {
+		this.setState({
+			textureT: "white",
+			trangleTapWhite: true,
+		})
+	},_selectWhiteC() {
+		this.setState({
+			textureC: "white",
+			squareTapWhite: true,
 		})
 	},
   _selectBlue(){
     this.setState({
-      texture : "blue",
-      tapBlue: true
+      texture: "blue",
+	    sphereTapBlue: true,
+	
+    })
+  }, _selectBlueT(){
+    this.setState({
+      textureT : "blue",
+	    trangleTapBlue: true,
+    })
+  },_selectBlueC(){
+    this.setState({
+      textureC : "blue",
+	    squareTapBlue: true,
     })
   },
   _selectGrey(){
     this.setState({
       texture : "grey",
-      tapGrey: true
+	    sphereTapGrey: true,
+	
+    })
+  },_selectGreyT(){
+    this.setState({
+      textureT : "grey",
+	    trangleTapGrey: true,
+    })
+  },_selectGreyC(){
+    this.setState({
+      textureC: "grey",
+	    squareTapGrey: true,
     })
   },
   _selectRed(){
     this.setState({
       texture : "red",
-      tapRed: true
+	    sphereTapRed: true,
+	
+    })
+  },_selectRedT(){
+    this.setState({
+      textureT: "red",
+	    trangleTapRed: true,
+    })
+  },_selectRedC(){
+    this.setState({
+      textureC: "red",
+	    squareTapRed: true,
     })
   },
   _selectYellow(){
     this.setState({
       texture : "yellow",
-      tapYellow: true
+	   sphereTapYellow: true,
+	
+    })
+  },_selectYellowT(){
+    this.setState({
+      textureT : "yellow",
+	    trangleTapYellow: true,
+    })
+  },_selectYellowC(){
+    this.setState({
+      textureC : "yellow",
+	    squareTapYellow: true,
     })
   },
 	_animateFinished() {
 		this.setState({
-			tapWhite: false,
+			squareTapWhite: true,
+			trangleTapWhite: true,
+			sphereTapWhite: true,
 		})
 	},
 });
