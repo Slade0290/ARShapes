@@ -1,6 +1,6 @@
-# Blender v2.91.2 OBJ File: 'simple_pyramide.blend'
+# Blender v2.91.2 OBJ File: 'object_pyramide.blend'
 # www.blender.org
-mtllib simple_pyramide.mtl
+mtllib object_pyramide.mtl
 o Cube_Cube.001
 v -1.000000 -1.000000 1.000000
 v 0.000000 1.000000 0.000000
